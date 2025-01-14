@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Mensa Universitaria</title>
+
+    <!-- Caricamento file CSS -->
+    <link rel="stylesheet" href="../css/Mensa.css">
+
+</head>
+<body>
+    <header>
+        <h1>Mensa Universitaria</h1>
+        <nav>
+            <button onclick="mostraSezione('homeSection')">Home</button>
+            <button onclick="mostraSezione('profileSection')">Profilo</button>
+            <button onclick="mostraSezione('menuSettimanaSection')">Menù della Settimana</button>
+            <button onclick="mostraSezione('ordineGiornoSection')">Ordine del Giorno</button>
+            <button onclick="mostraSezione('contattiSection')">Contatti</button>
+            <button id="loginLogoutButton" onclick="gestisciLoginLogout()">Login</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sezione Home -->
+        <section id="homeSection" class="section">
+            <h2>Benvenuto alla Mensa Universitaria!</h2>
+            <p>Scopri il menù settimanale e preordina il tuo pasto vedendo in anticipo il costo che pagherai.</p>
+            <div class="image-container">
+                <img src="https://us.123rf.com/450wm/pandavector/pandavector1612/pandavector161200270/69246343-torre-di-pisa-in-italia-icona-di-stile-piatto-isolato-su-sfondo-bianco-italia-paese-simbolo.jpg?ver=6" alt="Torre di Pisa">
+            </div>
+            <h2>Fasce di Costo & Possibilità di Pasto</h2>
+            <div class="image-container">
+                <img src="../img/costo_e_fasce_prezzo.png" alt="Prezzi e Fasce ISEE">
+            </div>
+            <br>
+            <br>
+            <br>
+            <!-- Pulsante per tornare a index.html -->
+            <button onclick="tornaAIndex()" style="display: block; margin: 20px auto; padding: 10px 20px; background-color: #003366; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Torna alla pagina iniziale
+            </button>
+
+            <script>
+                // Funzione per tornare alla pagina index.html
+                function tornaAIndex() {
+                    window.location.href = "../index.html";
+                }
+            </script>
+
+        </section>
+
+        <!-- Sezione Login --------------------------------------------------------------------------------------->
+        <div id="loginSection" class="section hidden">
+            <h2>Login</h2>
+            <input type="text" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <br>
+            <br>
+        <button onclick="accedi()">Accedi</button>
+        <!-- Link per mostrare la sezione di registrazione -->
+        <br>
+        <br>
+        <p>Non hai un account? <a href="#" onclick="mostraSezione('registerSection')">Registrati qui</a></p>
+        </div>
+
+        <!-------------------------------------------------------------------------------------------------------------------------->
+
+       <!-- Sezione Registrazione -->
+        <div id="registerSection" class="section hidden">
+            <h2>Registrazione</h2>
+            <br>
+            <br>
+            <h3>Nome :</h3>
+            <input type="text" id="registerNome" placeholder="Nome">
+            <h3>Cognome :</h3>
+            <input type="text" id="registerCognome" placeholder="Cognome">
+            <h3>Inserisci Email :</h3>
+            <input type="email" id="registerEmail" placeholder="Email">
+            <h3>Inserisci Password :</h3>
+            <input type="password" id="registerPassword" placeholder="Password">
+            <h3>Inserisci Data di Nascita :</h3>
+            <input type="date" id="registerDataDiNascita" >
+            <br>
+            <br>
+            <button onclick="registrati()">Registrati</button>
+            <!-- Link per tornare al login -->
+            <br>
+            <br>
+            <p>Hai già un account? <a href="#" onclick="mostraSezione('loginSection')">Accedi qui</a></p>
+        </div>
+
+        <!--Sezione gestione messaggi ----------------------------------------------------------------------------------------------------->
+
+        <!-- Sezione Profilo Utente -->
+        <section id="profileSection" class="section hidden">
+            <h2>Profilo Utente</h2>
+            <br>
+            <br>
+            <p><strong>Nome:</strong> <span id="nome"></span></p>
+            <br>
+            <p><strong>Cognome:</strong> <span id="cognome"></span></p>
+            <br>
+            <p><strong>Data di Nascita:</strong> <span id="dataDiNascita"></span></p>
+            <br>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <br>
+            <p><strong>Saldo:</strong> €<span id="saldo"></span></p>
+            <br>
+            <br>
+            <h2>Storico Messaggi</h2>
+            <div id="storicoMessaggi"></div>
+        </section>
+        <br>
+        <br>
+         <!-- Sezione per visualizzare i messaggi (solo admin) -->
+         <section id="messaggiSection" class="section hidden">
+            <h2>Messaggi degli Utenti</h2>
+            <div id="messaggiList"></div>
+        </section>
+
+        <!------------------------------------------------------------------------------------------------------->
+
+        <!-- Sezione Menù della Settimana -->
+        <section id="menuSettimanaSection" class="section hidden">
+            <h2>Menù della Settimana</h2>
+            <div id="menuSettimanaContent"></div>
+        </section>
+
+        <!-- Gestione Ordini ---------------------------------------------------------------------------------------------------------------------->
+
+        <!-- Sezione Ordine del Giorno -->
+        <div id="ordineGiornoSection" class="section hidden">
+            <h2>Ordine del Giorno</h2>
+            <select id="giornoSelect" onchange="caricaMenuGiorno(this.value)">
+                <option value="">Seleziona un giorno</option>
+                <option value="Lunedì">Lunedì</option>
+                <option value="Martedì">Martedì</option>
+                <option value="Mercoledì">Mercoledì</option>
+                <option value="Giovedì">Giovedì</option>
+                <option value="Venerdì">Venerdì</option>
+                <option value="Sabato">Sabato</option>
+                <option value="Domenica">Domenica</option>
+            </select>
+            <div id="ordineContent" class="hidden"></div>
+        </div>
+
+        <!-- Sezione Storico Ordini -->
+        <div id="storicoOrdiniSection" class="section">
+            <h2>Storico Ordini</h2>
+            <div id="storicoOrdini"></div>
+        </div>
+
+        <!-- Sezione Ordini Admin (solo per admin) -->
+        <div id="ordiniAdminSection" class="section hidden">
+            <h2>Ordini di Tutti gli Utenti</h2>
+            <div id="ordiniAdmin"></div>
+        </div>
+
+        <!------------------------------------------------------------------------------------------------------------------------>
+
+        <!-- Sezione Contatti -->
+        <section id="contattiSection" class="section hidden">
+            <h2>Contatti Mensa</h2>
+            <br>
+            <br>
+            <p><strong>Indirizzo:</strong> Via Università, 42, 56100 Pisa PI</p>
+            <br>
+            <p><strong>Telefono:</strong> 050 1234567</p>
+            <br>
+            <p><strong>Email:</strong> mensa@pisana.it</p>
+            <br>
+            <br>
+            <h3>Lascia un messaggio per la mensa:</h3>
+            <br>
+            <textarea id="valutazione" rows="4" cols="50" placeholder="Scrivi il tuo messaggio qui..."></textarea>
+            <button onclick="inviaMessaggio()">Invia Messaggio</button>
+        </section>
+
+        <!-- Gestione Menù da parte dell'Admin --------------------------------------------------------------------------------------------------------->
+
+        <!-- Sezione per Admin - Modifica Menù -->
+        <section id="menuEditSection" class="section hidden">
+            <h2>Modifica Menù della Settimana</h2>
+            <label for="giorno">Giorno della Settimana:</label>
+            <select id="giorno">
+                <option value="lunedi">Lunedì</option>
+                <option value="martedi">Martedì</option>
+                <option value="mercoledi">Mercoledì</option>
+                <option value="giovedi">Giovedì</option>
+                <option value="venerdi">Venerdì</option>
+                <option value="sabato">Sabato</option>
+                <option value="domenica">Domenica</option>
+            </select>
+
+            <label for="primi">Primi Piatti (separati da virgola):</label>
+            <input type="text" id="primi" placeholder="Es. Pasta al Pomodoro, Risotto ai Funghi">
+
+            <label for="secondi">Secondi Piatti (separati da virgola):</label>
+            <input type="text" id="secondi" placeholder="Es. Pollo alla Griglia, Filetto di Maiale">
+
+            <label for="contorni">Contorni (separati da virgola):</label>
+            <input type="text" id="contorni" placeholder="Es. Insalata Mista, Patate al Forno">
+
+            <label for="dolce">Dolce:</label>
+            <input type="text" id="dolce" placeholder="Es. Torta al Cioccolato">
+
+            <label for="frutta">Frutta:</label>
+            <input type="text" id="frutta" placeholder="Es. Mela">
+
+            <button onclick="salvaModificheMenu()">Salva Modifiche</button>
+        </section>
+        
+    </main>
+
+     <!-- Caricamento del file JS -->
+     <script src="../js/Mensa.js"></script>
+
+</body>
+</html>
