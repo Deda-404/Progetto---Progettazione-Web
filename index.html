@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensa Universitaria - Progetto Web</title>
+    <style>
+        /* Stili di base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Bianco con leggero azzurro */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #003366; /* Blu scuro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1, header h2 {
+            margin: 0;
+        }
+
+        /* Pulsante "Vai al sito" */
+        #vaiAlSitoButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        #vaiAlSitoButton:hover {
+            background-color: blue ;
+        }
+
+        /* Contenuto principale */
+        main {
+            padding: 20px;
+        }
+
+        /* Sezioni */
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        section h3 {
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Liste */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        /* Informazioni aggiuntive */
+        .info-progetto {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Accesso Admin */
+        .accesso-admin {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 5px solid #ff6666;
+        }
+    </style>
+
+    <script>
+        // Funzione JavaScript per aprire il file Mensa.html
+        function vaiAlSito() {
+            window.location.href = "html/Mensa.html";
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Mensa Universitaria</h1>
+        <h2>Progetto Web - Alessio de Dato (635256)</h2>
+        <p>UniPI - Esame di Progettazione Web</p>
+    </header>
+
+    <!-- Pulsante Vai al sito -->
+    <button id="vaiAlSitoButton" onclick="vaiAlSito()">Vai al sito</button>
+
+    <!-- Contenuto Principale -->
+    <main>
+        <!-- Descrizione del progetto -->
+        <section>
+            <h3>Specifiche del Progetto</h3>
+            <p>
+                L'idea di questo progetto nasce dall'esigenza di avere un servizio funzionale e ottimizzato tra Studente e Mensa universitaria.
+                Questo sito è strutturato per risolvere problematiche frequenti e a migliorare l’esperienza utente.
+            </p>
+            <p>Il progetto mira a colmare tutte quelle lacune che si riscontrano quotidianamente nella mensa, come:</p>
+            <ul>
+                <li>L'impossibilità di avere dati del profilo utente aggiornati in tempo reale.</li>
+                <li>La fruibilità scarsa di informazioni sul menù.</li>
+                <li>L'impossibilità di ordinare il pasto in anticipo, che aiuterebbe a ridurre sprechi.</li>
+                <li>L'assenza di un sistema per lasciare messaggi e recensioni in tempo reale.</li>
+            </ul>
+            <p>
+                Questo progetto propone quindi un sito organizzato in sezioni intuitive, navigabili tramite una "barra di navigazione" e "pulsanti funzionali".
+            </p>
+        </section>
+
+        <!-- Funzionalità Utente -->
+        <section>
+            <h3>Funzionalità per l'Utente</h3>
+            <p>Le funzionalità a disposizione di un utente registrato sono:</p>
+            <ul>
+                <li><strong>Home:</strong> Informazioni su fasce di prezzo e composizione dei piatti.</li>
+                <li><strong>Profilo:</strong> Visualizza dati del profilo, saldo, e storico messaggi inviati alla mensa.</li>
+                <li><strong>Menù della settimana:</strong> Consulta il menù settimanale, organizzato per giorni.</li>
+                <li><strong>Ordine del giorno:</strong> Scegli i piatti da ordinare in anticipo.</li>
+                <li><strong>Contatti:</strong> Visualizza informazioni di contatto e lascia un commento o giudizio.</li>
+                <li><strong>Login:</strong> Accedi, registrati o effettua logout.</li>
+            </ul>
+        </section>
+
+        <!-- Funzionalità Admin -->
+        <section>
+            <h3>Funzionalità per l'Admin</h3>
+            <p>
+                L'amministratore ha accesso a tutte le funzionalità dell'utente, con l’aggiunta di permessi speciali:
+            </p>
+            <ul>
+                <li><strong>Profilo:</strong> Visualizzazione e gestione dei messaggi inviati dagli utenti.</li>
+                <li><strong>Menù della settimana:</strong> Possibilità di modificare i menù giornalieri.</li>
+            </ul>
+        </section>
+
+        <!-- Credenziali Admin -->
+        <section class="accesso-admin">
+            <h3>Accesso Admin</h3>
+            <p>Per accedere come Admin, utilizzare le seguenti credenziali:</p>
+            <p><strong>Email:</strong> admin@mensa.com</p>
+            <p><strong>Password:</strong> admin</p>
+        </section>
+
+        <!-- Informazioni aggiuntive -->
+        <section class="info-progetto">
+            <p>
+                Tutti i diritti riservati © Alessio de Dato - Progetto Web - UniPI.
+            </p>
+        </section>
+    </main>
+
+</body>
+</html>
